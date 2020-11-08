@@ -37,15 +37,32 @@ var button = d3.select("#filter-btn");
 button.on("click", function() {
 
 // Select the input element and get the raw HTML node
-var inputElement = d3.select("#datetime");
+var dateInputElement = d3.select("#datetime");
+var cityInputElement = d3.select("#city");
+var stateInputElement = d3.select("#state");
+var countryInputElement = d3.select("#country");
+var shapeInputElement = d3.select("#shape");
 
 // Get the value property of the input element
-var inputValue = inputElement.property("value");
+var dateInputValue = dateInputElement.property("value");
+var cityInputValue = cityInputElement.property("value");
+var stateInputValue = stateInputElement.property("value");
+var countryInputValue = countryInputElement.property("value");
+var shapeInputValue = shapeInputElement.property("value");
 
-console.log(inputValue);
-console.log(sightings);
+console.log(dateInputValue);
+console.log(cityInputValue);
+console.log(stateInputValue);
+console.log(countryInputValue);
+console.log(shapeInputValue);
 
-var filteredData = sightings.filter(sighting => sighting.datetime === inputValue);
+//console.log(sightings);
+
+var filteredData = sightings.filter(sighting => sighting.datetime === dateInputValue ||
+                                                sighting.city === cityInputValue ||
+                                                sighting.state === stateInputValue ||
+                                                sighting.country === countryInputValue ||
+                                                sighting.shape === shapeInputValue);
 
 console.log(filteredData);
 
