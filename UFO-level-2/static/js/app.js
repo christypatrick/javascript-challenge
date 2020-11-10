@@ -26,13 +26,51 @@ data.forEach(ufo => {
       cell.text(value);
     });
   });
-////////////////////// filtering by date //////////////////////
+
+/////reset table/////
+
+// Get a reference to the form controls
+var formControl = d3.select(".form-control");
+
+// Select the button
+var resetButton = d3.select("#reset-btn");
+
+resetButton.on("click", function() {
+// remove any data from the table
+tbody.html("");
+
+// remove any data from the form
+formControl.html("");
+
+// Step 1: Loop Through `data` and log each UFO report object
+data.forEach(ufo => {
+  console.log(ufo);
+
+  // Step 2:  Use d3 to append one table row `tr` for each UFO report object
+  var row = tbody.append("tr");
+
+  // Step 3:  Use `Object.entries` to log each UFO report value
+  Object.entries(ufo).forEach(([key, value]) => {
+    console.log(key, value);
+
+    // Step 4: Use d3 to append 1 cell per UFO report value 
+    var cell = row.append("td");
+
+    // Step 5: Use d3 to update each cell's text with
+    // ufo report values
+    cell.text(value);
+  });
+});
+});
+
+
+  ////////////////////// filtering by date //////////////////////
 
 // Assign the data from `data.js` to a descriptive variable
 var sightings = data;
 
 // Select the button
-var button = d3.select("#filter-btn");
+var button = d3.selectAll("#filter-btn");
 
 button.on("click", function() {
 
@@ -58,11 +96,31 @@ console.log(shapeInputValue);
 
 //console.log(sightings);
 
-var filteredData = sightings.filter(sighting => sighting.datetime === dateInputValue ||
-                                                sighting.city === cityInputValue ||
-                                                sighting.state === stateInputValue ||
-                                                sighting.country === countryInputValue ||
-                                                sighting.shape === shapeInputValue);
+
+
+
+// if(dateInputValue !== ""){var filteredData = sightings.filter(function(obj){ return obj["datetime"] == dateInputValue })};
+// if(cityInputValue !== ""){var filteredData = sightings.filter(function(obj){ return obj["city"] == cityInputValue })};
+// if(stateInputValue !== ""){var filteredData = sightings.filter(function(obj){ return obj["state"] == stateInputValue })};
+// if(countryInputValue !== ""){var filteredData = sightings.filter(function(obj){ return obj["country"] == countryInputValue })};
+// if(shapeInputValue !== ""){var filteredData = sightings.filter(function(obj){ return obj["shape"] == shapeInputValue })};
+
+// if(cityInputValue !== ""){var filteredData = filteredData.filter(sighting => sighting.city === cityInputValue)};
+// if(stateInputValue !== ""){var filteredData = filteredData.filter(sighting => sighting.state === stateInputValue)};
+// if(countryInputValue !== ""){var filteredData = filteredData.filter(sighting => sighting.country === countryInputValue)};
+// if(shapeInputValue !== ""){var filteredData = filteredData.filter(sighting => sighting.shape === shapeInputValue)};
+
+// var filteredData = sightings.filter(sighting => sighting.datetime === dateInputValue ||
+//                                                 sighting.city === cityInputValue ||
+//                                                 sighting.state === stateInputValue ||
+//                                                 sighting.country === countryInputValue ||
+//                                                 sighting.shape === shapeInputValue);
+
+var filteredData = sightings.filter(sighting => sighting.datetime === dateInputValue)
+                            .filter(sighting => sighting.city === cityInputValue)
+                            .filter(sighting => sighting.state === stateInputValue)
+                            .filter(sighting => sighting.country === countryInputValue)
+                            .filter(sighting => sighting.shape === shapeInputValue);
 
 console.log(filteredData);
 
