@@ -33,23 +33,23 @@ defaultTable(data);
 
 /////reset table/////
 
-// // Get a reference to the form controls
-var formControl = d3.selectAll(".form-control")
+// // // Get a reference to the form controls
+// var formControl = d3.selectAll(".form-control")
 
-// // Select the button
-var resetButton = d3.select("#reset-btn");
+// // // Select the button
+// var resetButton = d3.select("#reset-btn");
 
-resetButton.on("click", function() {
+// resetButton.on("click", function() {
 
-// // remove any data from the form
-formControl.html("");
+// // // remove any data from the form
+// formControl.html("");
 
-// remove any data from the tables
-tbody.html("");
+// // remove any data from the tables
+// tbody.html("");
 
-//load the default table
-defaultTable(data)
-});
+// //load the default table
+// defaultTable(data)
+// });
 
 
 ////////////////////// filtering data /////////////////////
