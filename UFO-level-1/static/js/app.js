@@ -42,12 +42,7 @@ var inputElement = d3.select("#datetime");
 // Get the value property of the input element
 var inputValue = inputElement.property("value");
 
-console.log(inputValue);
-console.log(sightings);
-
 var filteredData = sightings.filter(sighting => sighting.datetime === inputValue);
-
-console.log(filteredData);
 
 // Get a reference to the table body
 var tbody = d3.select("tbody");

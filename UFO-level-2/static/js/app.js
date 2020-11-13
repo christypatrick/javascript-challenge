@@ -34,7 +34,7 @@ defaultTable(data);
 /////reset table/////
 
 // // Get a reference to the form controls
-var formControl = d3.selectAll(".form-control");
+var formControl = d3.selectAll(".form-control")
 
 // // Select the button
 var resetButton = d3.select("#reset-btn");
@@ -61,7 +61,10 @@ function updateFilters () {
   var grabbedElement = d3.select(this).select("input");
   var inputValue = grabbedElement.property("value")
   var genericID = grabbedElement.attr("id");
+  
   // console.log(inputValue)
+  
+  // gather filter input data to add to the dictionary
   if (inputValue) {
     filterDictionary[genericID] = inputValue;
   } else {
