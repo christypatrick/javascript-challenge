@@ -33,23 +33,27 @@ defaultTable(data);
 
 /////reset table/////
 
-// // // Get a reference to the form controls
-// var formControl = d3.selectAll(".form-control")
+// // Select the button
+var resetButton = d3.select("#reset-btn");
 
-// // // Select the button
-// var resetButton = d3.select("#reset-btn");
+resetButton.on("click", function() {
 
-// resetButton.on("click", function() {
+// // remove any data from the form
+d3.select("#datetime").node().value = "";
+d3.select("#city").node().value = "";
+d3.select("#state").node().value = "";
+d3.select("#country").node().value = "";
+d3.select("#shape").node().value = "";
 
-// // // remove any data from the form
-// formControl.html("");
+// remove any data from the tables
+tbody.html("");
 
-// // remove any data from the tables
-// tbody.html("");
+// prevent page refresh
+d3.event.preventDefault();
 
-// //load the default table
-// defaultTable(data)
-// });
+//load the default table
+defaultTable(data)
+});
 
 
 ////////////////////// filtering data /////////////////////
@@ -61,6 +65,9 @@ function updateFilters () {
   var grabbedElement = d3.select(this).select("input");
   var inputValue = grabbedElement.property("value")
   var genericID = grabbedElement.attr("id");
+  
+  // prevent page refresh
+  d3.event.preventDefault();
   
   // console.log(inputValue)
   

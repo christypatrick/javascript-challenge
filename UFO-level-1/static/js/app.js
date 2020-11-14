@@ -26,7 +26,49 @@ data.forEach(ufo => {
       cell.text(value);
     });
   });
-////////////////////// filtering by date //////////////////////
+
+/////reset table/////
+
+// // Select the button
+var resetButton = d3.select("#reset-btn");
+
+resetButton.on("click", function() {
+
+// // remove any data from the form
+d3.select("#datetime").node().value = "";
+
+// remove any data from the tables
+tbody.html("");
+
+// prevent page refresh
+d3.event.preventDefault();
+
+//load the default table
+// Step 1: Loop Through `data` and log each UFO report object
+data.forEach(ufo => {
+  console.log(ufo);
+
+  // Step 2:  Use d3 to append one table row `tr` for each UFO report object
+  var row = tbody.append("tr");
+
+  // Step 3:  Use `Object.entries` to log each UFO report value
+  Object.entries(ufo).forEach(([key, value]) => {
+    console.log(key, value);
+
+    // Step 4: Use d3 to append 1 cell per UFO report value 
+    var cell = row.append("td");
+
+    // Step 5: Use d3 to update each cell's text with
+    // ufo report values
+    cell.text(value);
+  });
+});
+});
+
+
+
+
+  ////////////////////// filtering by date //////////////////////
 
 // Assign the data from `data.js` to a descriptive variable
 var sightings = data;
@@ -50,6 +92,8 @@ var tbody = d3.select("tbody");
 // remove any data from the table
 tbody.html("");
 
+// prevent page refresh
+d3.event.preventDefault();
 
 // Step 1: Loop Through `data` and log each UFO report object
 filteredData.forEach(ufoFiltered => {
